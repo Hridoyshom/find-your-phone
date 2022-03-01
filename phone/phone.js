@@ -19,7 +19,7 @@ const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML = '';
     data.forEach(data => {
-        console.log(data);
+        // console.log(data);
 
         const div = document.createElement('div');
 
@@ -45,5 +45,16 @@ const displaySearchResult = data => {
 
 }
 const loadPhoneDetail = phoneId => {
-    console.log(phoneId);
+
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayPhoneDetail(data.data.mainFeatures))
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayPhoneDetail(data.data.mainFeatures.sensors))
+}
+const displayPhoneDetail = data => {
+    console.log(data);
 }
