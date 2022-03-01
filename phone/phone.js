@@ -27,9 +27,11 @@ const displaySearchResult = data => {
 
         div.innerHTML = `<div class="card">
         <img  src="${data.image}" class="card-img-top w-50 mx-auto " alt="...">
+        
         <div class="card-body">
             <h5 class="card-title">${data.brand}</h5>
             <p class="card-text">${data.phone_name}</p>
+            <button onclick= "loadPhoneDetail('${data.slug}')"  type="button" id="btn-explore">Explore</button>
         </div>
     </div>
     `;
@@ -37,6 +39,11 @@ const displaySearchResult = data => {
         searchResult.appendChild(div);
 
 
+
     })
 
+
+}
+const loadPhoneDetail = phoneId => {
+    console.log(phoneId);
 }
