@@ -9,8 +9,6 @@ const searchPhone = () => {
     if (searchText == '') {
         alert("Hello! Please Search by phone name!!");
 
-    } else if (typeof searchText == 'number') {
-        alert("Hello! Please Search by phone name!!");
     }
 
 
@@ -27,6 +25,9 @@ const searchPhone = () => {
             .then(res => res.json())
             .then(data => displaySearchResult(data.data));
 
+
+
+
     }
 
 
@@ -36,9 +37,12 @@ const searchPhone = () => {
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML = '';
+    if (data == '') {
+        alert("Hello! Please Search by valid keywords!!");
+    }
 
     data.slice(0, 20).forEach(data => {
-        // console.log(data);
+        console.log(data.data);
 
         const div = document.createElement('div');
 
@@ -88,15 +92,15 @@ const displayPhoneDetail = data => {
             <div class="card-body">
                 <h5 class="card-title">${data.name}</h5>
                 <h2>Release Date</h2>
-                <p class="card-text">${data.releaseDate}</p>
+                <p class="card-text">${data?.releaseDate}</p>
                 <h2>Sensors</h2>
                 <p class="card-text">${data.mainFeatures.sensors}</p>
                 <h2>Others</h2>
-                <p class="card-text">WLAN:${data.others.WLAN}</p>
-                <p class="card-text">Bluetooth:${data.others.Bluetooth}</p>
-                <p class="card-text">GPS:${data.others.GPS}</p>
-                <p class="card-text">NFC:${data.others.NFC}</p>
-                <p class="card-text">Radio:${data.others.Radio}</p>
+                <p class="card-text">WLAN:${data.others?.WLAN}</p>
+                <p class="card-text">Bluetooth:${data.others?.Bluetooth}</p>
+                <p class="card-text">GPS:${data.others?.GPS}</p>
+                <p class="card-text">NFC:${data.others?.NFC}</p>
+                <p class="card-text">Radio:${data.others?.Radio}</p>
                 
             </div>
     `;
