@@ -49,12 +49,27 @@ const loadPhoneDetail = phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displayPhoneDetail(data.data.mainFeatures))
+        .then(data => displayPhoneDetail(data.data));
 
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayPhoneDetail(data.data.mainFeatures.sensors))
+
+
+    // fetch(url)
+    //     .then(res => res.json())
+    //     .then(data => displayPhoneDetail(data.data.mainFeatures.sensors))
 }
 const displayPhoneDetail = data => {
     console.log(data);
+    const phoneDetails = document.getElementById('phone-details');
+    const div = document.createElement('div');
+    div.classList.add('card');
+    div.innerHTML = `
+    <img src="${data.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${data.name}</h5>
+                <p class="card-text">${data.mainFeatures}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+    `;
+
+    phoneDetails.appendChild(div);
 }
