@@ -95,8 +95,16 @@ const displayPhoneDetail = data => {
                 <h5 class="card-title">${data.name}</h5>
                 <h2>Release Date</h2>
                 <p class="card-text">${data.releaseDate ? data.releaseDate : 'Not available'}</p>
+                
+                <h2>Phone Details</h2>
+                <p class="card-text">Storage:${data.mainFeatures.storage}</p>
+                <p class="card-text">Display Size:${data.mainFeatures.displaySize}</p>
+                <p class="card-text">Chipset:${data.mainFeatures.chipSet}</p>
+                <p class="card-text">Memory:${data.mainFeatures.memory}</p>
+
                 <h2>Sensors</h2>
                 <p class="card-text">${data.mainFeatures.sensors}</p>
+                
                 <h2>Others</h2>
                 <p class="card-text">WLAN:${data.others ? data.others.WLAN : 'Not available'}</p>
                 <p class="card-text">Bluetooth:${data.others ? data.others.Bluetooth : 'Not available'}</p>
