@@ -4,20 +4,27 @@ const searchPhone = () => {
     // console.log(searchText);
 
     searchField.value = '';
+    if (searchText == '') {
+        alert("Hello! Please Search Something!!");
+    }
+    else {
+        // adding API 
 
-    // adding API 
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
 
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
+        // console.log(url);
 
-    // console.log(url);
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displaySearchResult(data.data));
+    }
 
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displaySearchResult(data.data));
+
 }
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML = '';
+
     data.forEach(data => {
         // console.log(data);
 
@@ -60,13 +67,17 @@ const loadPhoneDetail = phoneId => {
 const displayPhoneDetail = data => {
     console.log(data);
     const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.innerHTML = '';
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML = `
-    <img src="${data.image}" class="card-img-top" alt="...">
+    <img src="${data.image}" class="card-img-top w-50 mx-auto " alt="...">
             <div class="card-body">
                 <h5 class="card-title">${data.name}</h5>
-                <p class="card-text">${data.mainFeatures}</p>
+                <h2>release Date</h2>
+                <p class="card-text">${data.releaseDate}</p>
+                <h2>Sensors</h2>
+                <p class="card-text">${data.mainFeatures.sensors}</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
     `;
