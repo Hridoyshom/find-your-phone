@@ -35,7 +35,7 @@ const searchPhone = () => {
 
 }
 
-
+// displaying result 
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML = '';
@@ -70,6 +70,7 @@ const displaySearchResult = data => {
 
 
 }
+// load detail 
 const loadPhoneDetail = phoneId => {
 
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
@@ -79,10 +80,9 @@ const loadPhoneDetail = phoneId => {
 
 
 
-    // fetch(url)
-    //     .then(res => res.json())
-    //     .then(data => displayPhoneDetail(data.data.mainFeatures.sensors))
+
 }
+// display phone detail
 const displayPhoneDetail = data => {
     console.log(data);
     const phoneDetails = document.getElementById('phone-details');
