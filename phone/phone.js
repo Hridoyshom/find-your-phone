@@ -93,6 +93,8 @@ const displayPhoneDetail = data => {
     <img src="${data.image}" class="card-img-top w-50 mx-auto " alt="...">
             <div class="card-body">
                 <h5 class="card-title">${data.name}</h5>
+                <p class="card-text">Brand:${data.brand}</p>
+
                 <h2>Release Date</h2>
                 <p class="card-text">${data.releaseDate ? data.releaseDate : 'Not available'}</p>
                 
